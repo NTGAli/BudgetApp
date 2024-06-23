@@ -39,6 +39,8 @@ import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.ntg.designsystem.util.detectCardType
+import com.ntg.designsystem.util.mask
 import com.ntg.samples.apps.budgetapp.core.designsystem.R
 
 @Composable

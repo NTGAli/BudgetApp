@@ -18,6 +18,7 @@ dependencies {
   api(libs.androidx.compose.foundation.layout)
   api(libs.androidx.compose.material.iconsExtended)
   api(libs.androidx.compose.material3)
+  implementation(libs.androidx.compose.ui.graphics)
   api(libs.androidx.compose.runtime)
   api(libs.androidx.compose.ui.util)
 
@@ -29,4 +30,5 @@ dependencies {
   testImplementation(libs.roborazzi)
 
   androidTestImplementation(libs.androidx.compose.ui.test)
+  implementation(libs.androidx.activity.compose.v182)
 }
