@@ -1,9 +1,21 @@
 plugins {
-    id("java-library")
-    alias(libs.plugins.jetbrains.kotlin.jvm)
+  alias(libs.plugins.budgetapp.android.library)
+  alias(libs.plugins.budgetapp.android.library.jacoco)
+  alias(libs.plugins.budgetapp.android.hilt)
+  id("kotlinx-serialization")
 }
 
-java {
-    sourceCompatibility = JavaVersion.VERSION_17
-    targetCompatibility = JavaVersion.VERSION_17
+android {
+  namespace = "com.ntg.samples.apps.budgetapp.core.data"
+  testOptions {
+    unitTests {
+      isIncludeAndroidResources = true
+      isReturnDefaultValues = true
+    }
+  }
+}
+
+dependencies {
+  testImplementation(libs.kotlinx.coroutines.test)
+  testImplementation(libs.kotlinx.serialization.json)
 }

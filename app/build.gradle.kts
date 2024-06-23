@@ -1,6 +1,16 @@
+import com.ntg.samples.apps.budgetapp.BudgetAppBuildType
+
 plugins {
-  alias(libs.plugins.android.application)
-  alias(libs.plugins.jetbrains.kotlin.android)
+  alias(libs.plugins.budgetapp.android.application)
+  alias(libs.plugins.budgetapp.android.application.compose)
+  alias(libs.plugins.budgetapp.android.application.flavors)
+  alias(libs.plugins.budgetapp.android.application.jacoco)
+  alias(libs.plugins.budgetapp.android.hilt)
+  alias(libs.plugins.budgetapp.android.application.firebase)
+  id("com.google.android.gms.oss-licenses-plugin")
+  alias(libs.plugins.roborazzi)
+  alias(libs.plugins.baselineprofile)
+
 }
 
 android {
@@ -9,8 +19,6 @@ android {
 
   defaultConfig {
     applicationId = "com.ntg.budgetapp"
-    minSdk = 24
-    targetSdk = 34
     versionCode = 1
     versionName = "1.0"
 
@@ -21,49 +29,81 @@ android {
   }
 
   buildTypes {
-    release {
-      isMinifyEnabled = false
-      proguardFiles(
-        getDefaultProguardFile("proguard-android-optimize.txt"),
-        "proguard-rules.pro",
-      )
+    debug {
+      applicationIdSuffix = BudgetAppBuildType.DEBUG.applicationIdSuffix
     }
-  }
-  compileOptions {
-    sourceCompatibility = JavaVersion.VERSION_17
-    targetCompatibility = JavaVersion.VERSION_17
-  }
-  kotlinOptions {
-    jvmTarget = "17"
-  }
-  buildFeatures {
-    compose = true
-  }
-  composeOptions {
-    kotlinCompilerExtensionVersion = "1.5.1"
+    release {
+      isMinifyEnabled = true
+      applicationIdSuffix = BudgetAppBuildType.RELEASE.applicationIdSuffix
+      proguardFiles(getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro")
+
+      // To publish on the Play store a private signing key is required, but to allow anyone
+      // who clones the code to sign and run the release variant, use the debug signing key.
+      // TODO: Abstract the signing configuration to a separate file to avoid hardcoding this.
+      signingConfig = signingConfigs.named("debug").get()
+      // Ensure Baseline Profile is fresh for release builds.
+      baselineProfile.automaticGenerationDuringBuild = true
+    }
   }
   packaging {
     resources {
       excludes += "/META-INF/{AL2.0,LGPL2.1}"
     }
   }
+  testOptions {
+    unitTests {
+      isIncludeAndroidResources = true
+    }
+  }
 }
 
 dependencies {
+  implementation(project(":core:designsystem"))
+  implementation(project(":core:data"))
+  implementation(project(":core:model"))
 
-  implementation(libs.androidx.core.ktx)
-  implementation(libs.androidx.lifecycle.runtime.ktx)
   implementation(libs.androidx.activity.compose)
-  implementation(platform(libs.androidx.compose.bom))
-  implementation(libs.androidx.ui)
-  implementation(libs.androidx.ui.graphics)
-  implementation(libs.androidx.ui.tooling.preview)
-  implementation(libs.androidx.material3)
-  testImplementation(libs.junit)
-  androidTestImplementation(libs.androidx.junit)
-  androidTestImplementation(libs.androidx.espresso.core)
-  androidTestImplementation(platform(libs.androidx.compose.bom))
-  androidTestImplementation(libs.androidx.ui.test.junit4)
-  debugImplementation(libs.androidx.ui.tooling)
-  debugImplementation(libs.androidx.ui.test.manifest)
+  implementation(libs.androidx.compose.material3.adaptive)
+  implementation(libs.androidx.compose.material3.adaptive.layout)
+  implementation(libs.androidx.compose.material3.adaptive.navigation)
+  implementation(libs.androidx.compose.material3.windowSizeClass)
+  implementation(libs.androidx.compose.runtime.tracing)
+  implementation(libs.androidx.core.ktx)
+  implementation(libs.androidx.core.splashscreen)
+  implementation(libs.androidx.hilt.navigation.compose)
+  implementation(libs.androidx.lifecycle.runtimeCompose)
+  implementation(libs.androidx.navigation.compose)
+  implementation(libs.androidx.profileinstaller)
+  implementation(libs.androidx.tracing.ktx)
+  implementation(libs.androidx.window.core)
+  implementation(libs.kotlinx.coroutines.guava)
+  implementation(libs.coil.kt)
+
+  ksp(libs.hilt.compiler)
+
+  debugImplementation(libs.androidx.compose.ui.testManifest)
+
+  kspTest(libs.hilt.compiler)
+
+  testImplementation(libs.androidx.compose.ui.test)
+  testImplementation(libs.hilt.android.testing)
+  testImplementation(libs.work.testing)
+
+  testDemoImplementation(libs.robolectric)
+  testDemoImplementation(libs.roborazzi)
+
+  androidTestImplementation(libs.androidx.test.espresso.core)
+  androidTestImplementation(libs.androidx.navigation.testing)
+  androidTestImplementation(libs.androidx.compose.ui.test)
+  androidTestImplementation(libs.hilt.android.testing)
+
+  implementation(libs.androidx.compose.material3)
+
+
+}
+
+baselineProfile {
+  // Don't build on every iteration of a full assemble.
+  // Instead enable generation directly for the release build variant.
+  automaticGenerationDuringBuild = false
 }
