@@ -6,7 +6,7 @@ plugins {
 }
 
 android {
-  namespace = "com.ntg.samples.apps.budgetapp.core.data"
+  namespace = "com.ntg.core.data"
   testOptions {
     unitTests {
       isIncludeAndroidResources = true
@@ -16,6 +16,7 @@ android {
 }
 
 dependencies {
+  implementation(project(":core:model"))
   testImplementation(libs.kotlinx.coroutines.test)
   testImplementation(libs.kotlinx.serialization.json)
 }

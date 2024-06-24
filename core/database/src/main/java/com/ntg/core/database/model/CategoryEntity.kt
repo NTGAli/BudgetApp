@@ -2,7 +2,7 @@ package com.ntg.core.database.model
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey
-import com.ntg.core.data.Category
+import com.ntg.core.model.Category
 
 @Entity(
     tableName = "category",

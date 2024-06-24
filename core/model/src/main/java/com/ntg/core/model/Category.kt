@@ -1,4 +1,4 @@
-package com.ntg.core.data
+package com.ntg.core.model
 
 data class Category(
     val id: Int = 0,

@@ -10,7 +10,7 @@ android {
 //    testInstrumentationRunner =
 //      "com.ntg.core.database"
   }
-  namespace = "com.ntg.budgetapp.core.database"
+  namespace = "com.ntg.core.database"
 }
 
 dependencies {
