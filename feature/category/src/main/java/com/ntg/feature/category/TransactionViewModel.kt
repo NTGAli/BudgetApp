@@ -11,15 +11,13 @@ import com.ntg.core.model.Category
 
 @HiltViewModel
 class TransactionViewModel @Inject constructor(
-    private val categoryRepository: CategoryRepository
-//    private val categoryRepository: CategoryRepository
-): ViewModel() {
+  private val categoryRepository: CategoryRepository,
+) : ViewModel() {
 
-//    val categories = categoryRepository.getCategories()
-    fun insertCategory(category: Category){
-        viewModelScope.launch {
-//            categoryRepository.insertNewCategory(category.copy(id = generateUniqueFiveDigitId()))
-        }
+  fun insertCategory(category: Category) {
+    viewModelScope.launch {
+      categoryRepository.insertCategory(category)
     }
+  }
 
 }

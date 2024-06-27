@@ -7,14 +7,14 @@ import dagger.Module
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
 
-
 @Module
 @InstallIn(SingletonComponent::class)
-internal abstract class DataModule {
-
+internal interface CategoryRepositoryModule {
 
   @Binds
-  internal abstract fun bindCategoryRepository(impl: CategoryRepositoryImpl): CategoryRepository
+  fun bindCategoryRepository(
+    categoryRepositoryImpl: CategoryRepositoryImpl
+  ): CategoryRepository
 
 
 }

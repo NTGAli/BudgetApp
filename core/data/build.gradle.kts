@@ -16,7 +16,7 @@ android {
 }
 
 dependencies {
-  implementation(project(":core:model"))
+  implementation(project(":core:database"))
   testImplementation(libs.kotlinx.coroutines.test)
   testImplementation(libs.kotlinx.serialization.json)
 }

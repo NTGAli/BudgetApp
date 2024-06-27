@@ -1,10 +1,10 @@
 package com.ntg.core.database
 
-import CategoryDao
 import androidx.room.Database
 import androidx.room.RoomDatabase
 import androidx.room.TypeConverters
 import com.ntg.core.database.converters.StringListConvertor
+import com.ntg.core.database.dao.CategoryDao
 import com.ntg.core.database.dao.TransactionsDao
 import com.ntg.core.database.model.CategoryEntity
 import com.ntg.core.database.model.TransactionEntity
@@ -15,7 +15,7 @@ import com.ntg.core.database.model.TransactionEntity
         TransactionEntity::class,
         CategoryEntity::class
     ],
-    version = 1,
+    version = 2,
     exportSchema = true,
 )
 @TypeConverters(

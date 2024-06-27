@@ -1,7 +1,7 @@
 package com.ntg.core.database.di
 
-import CategoryDao
 import com.ntg.core.database.AppDatabase
+import com.ntg.core.database.dao.CategoryDao
 import com.ntg.core.database.dao.TransactionsDao
 import dagger.Module
 import dagger.Provides
