@@ -8,23 +8,23 @@ import com.ntg.core.model.Category
     tableName = "category",
 )
 data class CategoryEntity(
-    @PrimaryKey(autoGenerate = false)
+  @PrimaryKey(autoGenerate = false)
     val id: Int,
-    val title: String,
-    val icon: String?=null,
-    val dateCreated: String,
+  val title: String,
+  val iconId: Int?=null,
+  val dateCreated: String,
 )
 
 fun CategoryEntity.asCategory() = Category(
     id = id,
     title = title,
-    icon = icon,
+    iconId = iconId,
     dateCreated = dateCreated
 )
 
 fun Category.toEntity() = CategoryEntity(
     id = id,
     title = title,
-    icon = icon,
+    iconId = iconId,
     dateCreated = dateCreated
 )

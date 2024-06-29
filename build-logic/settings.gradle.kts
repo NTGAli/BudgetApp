@@ -9,6 +9,7 @@ dependencyResolutionManagement {
         }
     }
 }
+gradle.startParameter.excludedTaskNames.addAll(listOf(":convention"))
 
 rootProject.name = "build-logic"
 include(":convention")

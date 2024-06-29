@@ -3,4 +3,6 @@
     <string name="income">Income</string>
     <string name="outcome">Outcome</string>
     <string name="add_image">Add Image</string>
+    <string name="submit">submit</string>
+    <string name="search">search</string>
 </resources>

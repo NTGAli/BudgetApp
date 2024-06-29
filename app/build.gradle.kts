@@ -8,21 +8,18 @@ plugins {
   alias(libs.plugins.budgetapp.android.hilt)
   alias(libs.plugins.budgetapp.android.application.firebase)
   id("com.google.android.gms.oss-licenses-plugin")
-  alias(libs.plugins.roborazzi)
   alias(libs.plugins.baselineprofile)
-
+  alias(libs.plugins.roborazzi)
 }
 
 android {
-  namespace = "com.ntg.budgetapp"
-  compileSdk = 34
-
   defaultConfig {
     applicationId = "com.ntg.budgetapp"
-    versionCode = 1
-    versionName = "1.0"
+    versionCode = 8
+    versionName = "0.1.2" // X.Y.Z; X = Major, Y = minor, Z = Patch level
 
-    testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+    // Custom test runner to set up Hilt dependency graph
+    testInstrumentationRunner = "com.google.samples.apps.nowinandroid.core.testing.NiaTestRunner"
     vectorDrawables {
       useSupportLibrary = true
     }
@@ -45,9 +42,10 @@ android {
       baselineProfile.automaticGenerationDuringBuild = true
     }
   }
+
   packaging {
     resources {
-      excludes += "/META-INF/{AL2.0,LGPL2.1}"
+      excludes.add("/META-INF/{AL2.0,LGPL2.1}")
     }
   }
   testOptions {
@@ -55,12 +53,15 @@ android {
       isIncludeAndroidResources = true
     }
   }
+  namespace = "com.ntg.budgetapp"
 }
 
 dependencies {
+  implementation(project(":core:model"))
   implementation(project(":core:designsystem"))
   implementation(project(":core:data"))
-  implementation(project(":core:model"))
+  implementation(project(":core:database"))
+  implementation(project(":feature:category"))
 
   implementation(libs.androidx.activity.compose)
   implementation(libs.androidx.compose.material3.adaptive)
@@ -98,6 +99,7 @@ dependencies {
   androidTestImplementation(libs.hilt.android.testing)
 
   implementation(libs.androidx.compose.material3)
+
 
 
 }

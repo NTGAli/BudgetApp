@@ -11,10 +11,10 @@ import dagger.hilt.components.SingletonComponent
 @InstallIn(SingletonComponent::class)
 internal interface CategoryRepositoryModule {
 
-  @Binds
-  fun bindCategoryRepository(
-    categoryRepositoryImpl: CategoryRepositoryImpl
-  ): CategoryRepository
+//  @Binds
+//  fun bindCategoryRepository(
+//    categoryRepositoryImpl: CategoryRepositoryImpl
+//  ): CategoryRepository
 
 
 }

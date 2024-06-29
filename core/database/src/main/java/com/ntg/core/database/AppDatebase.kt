@@ -15,7 +15,7 @@ import com.ntg.core.database.model.TransactionEntity
         TransactionEntity::class,
         CategoryEntity::class
     ],
-    version = 2,
+    version = 4,
     exportSchema = true,
 )
 @TypeConverters(
