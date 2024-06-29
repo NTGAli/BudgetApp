@@ -19,7 +19,7 @@ android {
     versionName = "0.1.2" // X.Y.Z; X = Major, Y = minor, Z = Patch level
 
     // Custom test runner to set up Hilt dependency graph
-    testInstrumentationRunner = "com.google.samples.apps.nowinandroid.core.testing.NiaTestRunner"
+    testInstrumentationRunner = "com.ntg.core.testing.BudgetTestRunner"
     vectorDrawables {
       useSupportLibrary = true
     }
@@ -60,6 +60,8 @@ dependencies {
   implementation(project(":core:model"))
   implementation(project(":core:designsystem"))
   implementation(project(":core:data"))
+  implementation(project(":core:common"))
+  implementation(project(":core:analytics"))
   implementation(project(":core:database"))
   implementation(project(":feature:category"))
 
