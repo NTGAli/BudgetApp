@@ -21,16 +21,21 @@ fun AutoCompleteDropdown(
   modifier: Modifier,
   query: MutableState<String>,
   list: List<String>,
-  onClick:(String) -> Unit
-){
-  AnimatedVisibility(visible = list.any { it.lowercase().contains(query.value.lowercase()) && it.lowercase() != query.value.lowercase() } && query.value.isNotEmpty()) {
+  onClick: (String) -> Unit,
+) {
+  AnimatedVisibility(
+      visible = list.any {
+          it.lowercase().contains(query.value.lowercase()) && it.lowercase() != query.value.lowercase()
+      } && query.value.isNotEmpty(),
+  ) {
     androidx.compose.material3.Card(
-      modifier = modifier,
-      shape = RoundedCornerShape(16.dp)) {
+        modifier = modifier,
+        shape = RoundedCornerShape(16.dp),
+    ) {
       LazyColumn {
         items(
-          list.filter { it.contains(query.value) }
-        ){
+            list.filter { it.contains(query.value) },
+        ) {
           Item(text = it) {
             onClick(it)
           }
@@ -43,19 +48,20 @@ fun AutoCompleteDropdown(
 }
 
 @Composable
-private fun Item(text: String, onClick:()-> Unit){
+private fun Item(text: String, onClick: () -> Unit) {
 
   Row(
-    modifier = Modifier
-      .fillMaxWidth()
-      .clip(RoundedCornerShape(8.dp))
-      .clickable {
-        onClick.invoke()
-      }
+      modifier = Modifier
+          .fillMaxWidth()
+          .clip(RoundedCornerShape(8.dp))
+          .clickable {
+              onClick.invoke()
+          },
   ) {
     Text(
-      modifier = Modifier.padding(vertical = 8.dp, horizontal = 16.dp),
-      text = text, style = MaterialTheme.typography.titleMedium.copy(MaterialTheme.colorScheme.onSurfaceVariant))
+        modifier = Modifier.padding(vertical = 8.dp, horizontal = 16.dp),
+        text = text, style = MaterialTheme.typography.titleMedium.copy(MaterialTheme.colorScheme.onSurfaceVariant),
+    )
   }
 
 }

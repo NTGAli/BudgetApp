@@ -28,8 +28,8 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
-import com.ntg.core.data.util.Categories
-import com.ntg.core.data.util.generateUniqueFiveDigitId
+import com.ntg.core.commom.util.Categories
+import com.ntg.core.commom.util.generateUniqueFiveDigitId
 import com.ntg.core.designsystem.component.AutoCompleteDropdown
 import com.ntg.core.designsystem.component.ButtonBottomBar
 import com.ntg.core.designsystem.component.SheetSearch

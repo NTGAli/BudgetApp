@@ -1,4 +1,4 @@
-package com.ntg.core.data.util
+package com.ntg.core.commom.util
 
 val Categories = listOf(
   "Income",
