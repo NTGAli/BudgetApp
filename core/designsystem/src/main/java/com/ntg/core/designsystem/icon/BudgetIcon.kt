@@ -6,5 +6,6 @@ object BudgetIcon {
 
   val ArrowRight = R.drawable.direction_right_01
   val search = R.drawable.search_02
+  val sampleCard = R.drawable.card
 
 }
