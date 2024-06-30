@@ -20,7 +20,7 @@ interface CategoryDao {
     suspend fun delete(categoryEntity: CategoryEntity)
 
     @Query("SELECT * FROM category")
-    fun getAll(): Flow<List<CategoryEntity>>
+    suspend fun getAll(): List<CategoryEntity>
 
     @Query("SELECT * FROM category WHERE title LIKE :query")
     fun find(query: String): Flow<List<CategoryEntity>>

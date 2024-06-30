@@ -15,6 +15,10 @@ import androidx.navigation.navOptions
 import androidx.tracing.trace
 import com.ntg.budgetapp.navigation.TopLevelDestination
 import com.ntg.feature.category.navigation.Category_Route
+import com.ntg.feature.home.navigation.Home_Route
+import com.ntg.feature.home.navigation.navigateToForYou
+import com.ntg.transaction.navigation.TransactionInput_Route
+import com.ntg.transaction.navigation.navigateToTransaction
 import kotlinx.coroutines.CoroutineScope
 
 @Composable
@@ -61,7 +65,8 @@ class BudgetAppState(
 
     val currentTopLevelDestination: TopLevelDestination?
         @Composable get() = when (currentDestination?.route) {
-            Category_Route -> TopLevelDestination.HOME
+            Home_Route -> TopLevelDestination.HOME
+          TransactionInput_Route -> TopLevelDestination.TRANSACTION
             else -> null
         }
 
@@ -85,6 +90,28 @@ class BudgetAppState(
      */
     val topLevelDestinations: List<TopLevelDestination> = TopLevelDestination.entries
 
+  fun navigateToTopLevelDestination(topLevelDestination: TopLevelDestination) {
+    trace("Navigation: ${topLevelDestination.name}") {
+      val topLevelNavOptions = navOptions {
+        // Pop up to the start destination of the graph to
+        // avoid building up a large stack of destinations
+        // on the back stack as users select items
+        popUpTo(navController.graph.findStartDestination().id) {
+          saveState = true
+        }
+        // Avoid multiple copies of the same destination when
+        // reselecting the same item
+        launchSingleTop = true
+        // Restore state when reselecting a previously selected item
+        restoreState = true
+      }
+
+      when (topLevelDestination) {
+        TopLevelDestination.HOME -> navController.navigateToForYou(topLevelNavOptions)
+        TopLevelDestination.TRANSACTION -> navController.navigateToTransaction(topLevelNavOptions)
+      }
+    }
+  }
 
 }
 

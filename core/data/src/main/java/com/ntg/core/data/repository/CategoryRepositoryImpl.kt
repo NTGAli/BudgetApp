@@ -1,13 +1,24 @@
 package com.ntg.core.data.repository
 
+import com.ntg.core.commom.BudgetDispatchers
+import com.ntg.core.commom.Dispatcher
 import com.ntg.core.database.dao.CategoryDao
+import com.ntg.core.database.model.CategoryEntity
+import com.ntg.core.database.model.asCategory
 import com.ntg.core.database.model.toEntity
 import com.ntg.core.model.Category
+import kotlinx.coroutines.CoroutineDispatcher
+import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.filter
+import kotlinx.coroutines.flow.flow
+import kotlinx.coroutines.flow.flowOn
+import kotlinx.coroutines.flow.map
 import javax.inject.Inject
 
 internal class CategoryRepositoryImpl @Inject constructor(
-  private val categoryDao: CategoryDao
-): CategoryRepository {
+  @Dispatcher(BudgetDispatchers.IO) private val ioDispatcher: CoroutineDispatcher,
+  private val categoryDao: CategoryDao,
+) : CategoryRepository {
   override suspend fun insertCategory(category: Category) {
     categoryDao.insert(category.toEntity())
   }
@@ -16,9 +27,14 @@ internal class CategoryRepositoryImpl @Inject constructor(
     categoryDao.insertAll(categories.map { it.toEntity() })
   }
 
-//  override suspend fun getCategories(): Flow<List<Category>> {
-//    return categoryDao.getAll().map { it.toE }
-//  }
+  override fun getCategories(): Flow<List<Category>> =
+    flow {
+      emit(
+        categoryDao.getAll()
+          .map(CategoryEntity::asCategory),
+      )
+    }
+      .flowOn(ioDispatcher)
 
 
 }

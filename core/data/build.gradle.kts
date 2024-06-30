@@ -18,6 +18,7 @@ android {
 dependencies {
   implementation(project(":core:database"))
   implementation(project(":core:analytics"))
+  implementation(project(":core:common"))
   testImplementation(libs.kotlinx.coroutines.test)
   testImplementation(libs.kotlinx.serialization.json)
 }

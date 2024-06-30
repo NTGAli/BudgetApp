@@ -10,9 +10,8 @@ const val Category_Route = "category_route"
 fun NavController.navigateToCategory(){
   navigate(Category_Route)
 }
-fun NavGraphBuilder.categoryScreen(
-  navigateTOCategory:()-> Unit
-) {
+fun NavGraphBuilder.categoryScreen()
+{
 
   composable(
     route = Category_Route,

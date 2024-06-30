@@ -56,13 +56,6 @@ fun HomeScreen(
 
         LazyColumn(
         ) {
-
-            item {
-                SwitchText(
-                    modifier = Modifier.fillMaxWidth(),
-                    firstText = "Outcome", secondText = "Income")
-            }
-
             topCardView()
 
             transactions()

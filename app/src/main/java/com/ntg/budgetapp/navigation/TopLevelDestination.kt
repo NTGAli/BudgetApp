@@ -18,4 +18,10 @@ enum class TopLevelDestination(
         titleTextId = R.string.app_name,
     ),
 
+  TRANSACTION(
+    selectedIcon = Icons.Rounded.Add,
+    unselectedIcon = Icons.Rounded.Add,
+    iconTextId = R.string.app_name,
+    titleTextId = R.string.app_name,
+  ),
 }

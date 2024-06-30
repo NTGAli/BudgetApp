@@ -1,5 +1,6 @@
 package com.ntg.budgetapp.ui
 
+import android.util.Log
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.WindowInsets
@@ -28,8 +29,12 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.semantics.testTagsAsResourceId
+import androidx.navigation.NavGraph.Companion.findStartDestination
+import androidx.navigation.navOptions
+import androidx.tracing.trace
 import com.ntg.budgetapp.R
 import com.ntg.budgetapp.navigation.BudgetNavHost
+import com.ntg.budgetapp.navigation.TopLevelDestination
 import com.ntg.core.designsystem.component.BottomNavigation
 import com.ntg.core.designsystem.component.NavigationRail
 import com.ntg.core.designsystem.component.scrollbar.BudgetBackground
@@ -76,7 +81,9 @@ internal fun BudgetApp(
         snackbarHost = { SnackbarHost(snackbarHostState) },
         bottomBar = {
             if (appState.shouldShowBottomBar) {
-                AppBottomBar()
+                AppBottomBar(
+                  onNavigateToDestination = appState::navigateToTopLevelDestination
+                )
             }
         },
     ){padding ->
@@ -137,7 +144,9 @@ internal fun BudgetApp(
 
 
 @Composable
-private fun AppBottomBar(){
+private fun AppBottomBar(
+  onNavigateToDestination: (TopLevelDestination) -> Unit,
+){
     val navs = listOf(
         NavigationItem(
             1,
@@ -156,6 +165,7 @@ private fun AppBottomBar(){
     )
 
     BottomNavigation(modifier = Modifier, items = navs) {
-
+      onNavigateToDestination(TopLevelDestination.TRANSACTION)
+      Log.d("BottomNavigation", "$it")
     }
 }
