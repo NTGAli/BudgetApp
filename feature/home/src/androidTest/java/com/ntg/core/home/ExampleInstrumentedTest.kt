@@ -1,4 +1,4 @@
-package com.ntg.feature.home
+package com.ntg.core.home
 
 import androidx.test.platform.app.InstrumentationRegistry
 import androidx.test.ext.junit.runners.AndroidJUnit4

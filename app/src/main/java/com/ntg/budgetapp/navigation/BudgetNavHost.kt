@@ -8,6 +8,7 @@ import com.ntg.feature.category.navigation.categoryScreen
 import com.ntg.feature.category.navigation.navigateToCategory
 import com.ntg.feature.home.navigation.Home_Route
 import com.ntg.feature.home.navigation.homeScreen
+import com.ntg.feature.setup.navigation.setupScreen
 import com.ntg.transaction.navigation.transactionScreen
 
 @Composable
@@ -28,5 +29,6 @@ fun BudgetNavHost(
       navigateTOCategory = navController::navigateToCategory
     )
     categoryScreen()
+    setupScreen()
   }
 }

@@ -29,9 +29,6 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.semantics.testTagsAsResourceId
-import androidx.navigation.NavGraph.Companion.findStartDestination
-import androidx.navigation.navOptions
-import androidx.tracing.trace
 import com.ntg.budgetapp.R
 import com.ntg.budgetapp.navigation.BudgetNavHost
 import com.ntg.budgetapp.navigation.TopLevelDestination
@@ -131,14 +128,8 @@ internal fun BudgetApp(
                     },
                 )
             }
-
-
-
-
         }
-
     }
-
 }
 
 
@@ -165,7 +156,7 @@ private fun AppBottomBar(
     )
 
     BottomNavigation(modifier = Modifier, items = navs) {
-      onNavigateToDestination(TopLevelDestination.TRANSACTION)
+      onNavigateToDestination(TopLevelDestination.SETUP)
       Log.d("BottomNavigation", "$it")
     }
 }

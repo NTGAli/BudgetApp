@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="lets_setup">Let\'s Setup</string>
+    <string name="next">next</string>
+    <string name="country">Country</string>
+    <string name="format">Format</string>
+    <string name="your_card">Your Card</string>
+    <string name="card_style">Card Style</string>
+    <string name="card_info">Card Info</string>
+    <string name="card_number">card number</string>
+    <string name="name">name</string>
+    <string name="only_for_display">This Information Is Only for Display Purposes.</string>
+</resources>

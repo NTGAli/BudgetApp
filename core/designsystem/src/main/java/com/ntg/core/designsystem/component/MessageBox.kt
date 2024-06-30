@@ -63,7 +63,7 @@ fun MessageBox(
 
         Text(
             modifier = Modifier.weight(1f),
-            text = text, style = MaterialTheme.typography.labelSmall, color = textColor)
+            text = text, style = MaterialTheme.typography.labelLarge, color = textColor)
 
         if (textButton != null){
             Button(

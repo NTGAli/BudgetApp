@@ -1,4 +1,4 @@
-package com.ntg.feature.home
+package com.ntg.core.home
 
 import org.junit.Test
 

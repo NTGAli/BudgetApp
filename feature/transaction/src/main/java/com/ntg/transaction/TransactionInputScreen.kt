@@ -28,7 +28,6 @@ import androidx.compose.material3.Text
 import androidx.compose.material3.rememberDatePickerState
 import androidx.compose.material3.rememberModalBottomSheetState
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.MutableState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateListOf
 import androidx.compose.runtime.mutableStateOf
@@ -44,7 +43,6 @@ import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.ntg.budgetapp.feature.transaction.R
-import com.ntg.core.commom.util.Categories
 import com.ntg.core.commom.util.formatDate
 import com.ntg.core.commom.util.getCurrentTime
 import com.ntg.core.designsystem.component.Button

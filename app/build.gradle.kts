@@ -66,6 +66,7 @@ dependencies {
   implementation(project(":feature:category"))
   implementation(project(":feature:home"))
   implementation(project(":feature:transaction"))
+  implementation(project(":feature:setup"))
 
   implementation(libs.androidx.activity.compose)
   implementation(libs.androidx.compose.material3.adaptive)

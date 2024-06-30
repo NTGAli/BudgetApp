@@ -14,9 +14,9 @@ import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navOptions
 import androidx.tracing.trace
 import com.ntg.budgetapp.navigation.TopLevelDestination
-import com.ntg.feature.category.navigation.Category_Route
 import com.ntg.feature.home.navigation.Home_Route
 import com.ntg.feature.home.navigation.navigateToForYou
+import com.ntg.feature.setup.navigation.navigateToSetup
 import com.ntg.transaction.navigation.TransactionInput_Route
 import com.ntg.transaction.navigation.navigateToTransaction
 import kotlinx.coroutines.CoroutineScope
@@ -109,6 +109,7 @@ class BudgetAppState(
       when (topLevelDestination) {
         TopLevelDestination.HOME -> navController.navigateToForYou(topLevelNavOptions)
         TopLevelDestination.TRANSACTION -> navController.navigateToTransaction(topLevelNavOptions)
+        TopLevelDestination.SETUP -> navController.navigateToSetup(topLevelNavOptions)
       }
     }
   }

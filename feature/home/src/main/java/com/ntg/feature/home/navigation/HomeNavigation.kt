@@ -3,10 +3,7 @@ package com.ntg.feature.home.navigation
 import androidx.navigation.NavController
 import androidx.navigation.NavGraphBuilder
 import androidx.navigation.NavOptions
-import androidx.navigation.NavType
 import androidx.navigation.compose.composable
-import androidx.navigation.navArgument
-import androidx.navigation.navDeepLink
 import com.ntg.feature.home.HomeRoute
 
 const val Home_Route = "home_route"

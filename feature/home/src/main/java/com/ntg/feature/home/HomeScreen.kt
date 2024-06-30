@@ -5,7 +5,6 @@ import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.LazyListScope
@@ -29,7 +28,6 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import com.ntg.core.designsystem.component.AmountReport
 import com.ntg.core.designsystem.component.BudgetTabRow
 import com.ntg.core.designsystem.component.Card
-import com.ntg.core.designsystem.component.SwitchText
 import com.ntg.core.designsystem.icon.BudgetIcon
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
