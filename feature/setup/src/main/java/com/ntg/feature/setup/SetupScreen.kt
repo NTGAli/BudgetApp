@@ -16,12 +16,18 @@ import com.ntg.core.designsystem.component.ButtonSize
 import com.ntg.core.designsystem.component.TextField
 
 @Composable
-fun SetupRoute() {
-  CardViewScreen()
+fun SetupRoute(
+  navigateToCardView: () -> Unit
+) {
+  SetupScreen(
+    navigateToCardView = navigateToCardView
+  )
 }
 
 @Composable
-fun SetupScreen() {
+fun SetupScreen(
+  navigateToCardView:() -> Unit
+) {
 
   val country = remember {
     mutableStateOf("")
@@ -59,7 +65,9 @@ fun SetupScreen() {
             .padding(top = 24.dp)
             .padding(horizontal = 32.dp),
         text = stringResource(id = R.string.next), size = ButtonSize.XL,
-    )
+    ){
+      navigateToCardView()
+    }
 
 
   }

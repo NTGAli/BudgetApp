@@ -1,6 +1,7 @@
 package com.ntg.core.database.dao
 
 import androidx.room.Dao
+import androidx.room.Delete
 import androidx.room.Query
 import androidx.room.Upsert
 import com.ntg.core.database.model.TransactionEntity
@@ -14,6 +15,13 @@ interface TransactionsDao {
     @Upsert
     suspend fun insertOrReplaceTransactions(transaction: TransactionEntity)
 
-    @Query(value = "DELETE FROM `transaction`")
-    suspend fun clearRecentTransactions()
+    @Delete
+    suspend fun delete(transaction: TransactionEntity)
+
+    @Query("DELETE FROM `transaction`")
+    suspend fun clearAll()
+
+    @Query("SELECT * FROM `transaction` WHERE cardId=:cardId")
+    suspend fun getTransactions(cardId: Int): List<TransactionEntity>
+
 }

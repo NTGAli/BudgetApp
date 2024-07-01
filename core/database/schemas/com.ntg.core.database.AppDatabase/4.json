@@ -2,7 +2,7 @@
   "formatVersion": 1,
   "database": {
     "version": 4,
-    "identityHash": "b3ef580a6567a56e8e0d87cceaf0bacf",
+    "identityHash": "5bde99872a73199a646c940ba367a640",
     "entities": [
       {
         "tableName": "transaction",
@@ -115,12 +115,56 @@
         },
         "indices": [],
         "foreignKeys": []
+      },
+      {
+        "tableName": "card",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` INTEGER NOT NULL, `number` TEXT NOT NULL, `name` TEXT NOT NULL, `dateCreated` TEXT NOT NULL, `cardStyleId` INTEGER NOT NULL, PRIMARY KEY(`id`))",
+        "fields": [
+          {
+            "fieldPath": "id",
+            "columnName": "id",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "number",
+            "columnName": "number",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "name",
+            "columnName": "name",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "dateCreated",
+            "columnName": "dateCreated",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "cardStyleId",
+            "columnName": "cardStyleId",
+            "affinity": "INTEGER",
+            "notNull": true
+          }
+        ],
+        "primaryKey": {
+          "autoGenerate": false,
+          "columnNames": [
+            "id"
+          ]
+        },
+        "indices": [],
+        "foreignKeys": []
       }
     ],
     "views": [],
     "setupQueries": [
       "CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)",
-      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, 'b3ef580a6567a56e8e0d87cceaf0bacf')"
+      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, '5bde99872a73199a646c940ba367a640')"
     ]
   }
 }

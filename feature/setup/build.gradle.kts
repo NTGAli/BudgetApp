@@ -22,9 +22,9 @@ android {
 dependencies {
   implementation(libs.accompanist.permissions)
   implementation(project(":core:data"))
+  implementation(project(":core:model"))
   implementation(project(":core:designsystem"))
   implementation(project(":core:common"))
-//    implementation(projects.core.domain)
 
   testImplementation(libs.robolectric)
   testDemoImplementation(libs.roborazzi)

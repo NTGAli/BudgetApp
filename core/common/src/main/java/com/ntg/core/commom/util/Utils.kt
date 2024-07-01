@@ -51,3 +51,10 @@ fun String.countryCodeToUnicodeFlag(): String {
       String(bytes, Charsets.UTF_16)
     }
 }
+
+
+fun getTimeStamp(year: Int, month: Int, day: Int, hour: Int, minute: Int): Long {
+  val calendar = Calendar.getInstance()
+  calendar.set(year, month - 1, day, hour, minute, 0)
+  return calendar.timeInMillis
+}

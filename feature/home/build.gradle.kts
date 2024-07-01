@@ -12,6 +12,7 @@ android {
 dependencies {
   implementation(libs.accompanist.permissions)
   implementation(project(":core:data"))
+  implementation(project(":core:model"))
 //    implementation(projects.core.domain)
 
   testImplementation(libs.robolectric)
